@@ -71,22 +71,22 @@ $(document).ready(function () {
 
             if (bodyWidth >= 1200) {
                 incno = itemsSplit[3];
-                itemWidth = sampwidth / incno;
+                itemWidth = sampwidth / incno * 2;
                 
             }
             else if (bodyWidth >= 992) {
                 incno = itemsSplit[2];
-                itemWidth = sampwidth / incno;
+                itemWidth = sampwidth / incno * 2;
                 
             }
             else if (bodyWidth >= 768) {
                 incno = itemsSplit[1];
-                itemWidth = sampwidth / incno;
+                itemWidth = sampwidth / incno * 2;
                
             }
             else {
                 incno = itemsSplit[0];
-                itemWidth = sampwidth / incno;
+                itemWidth = sampwidth / incno * 2;
                 
             }
             $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });

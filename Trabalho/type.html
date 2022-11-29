@@ -14,7 +14,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
-    <title>MakeUp</title>
+    <title>The SportsDB</title>
 
   </head>
   <body id="back">
@@ -34,13 +34,13 @@
                         <ul id=""class="nav navbar-nav">
                           
                             <div id="divi">
-                              <li><a id="sondiv1"href="type.html?blush">Esportes</a></li>
+                              <li><a id="sondiv1"href="type.html?esportes">Esportes</a></li>
                             </div>
                             <div id="divi">
-                              <li><a id="sondiv1"href="type.html?lipstick">Ligas</a></li>
+                              <li><a id="sondiv1"href="type.html?ligas">Ligas</a></li>
                             </div>
                             <div id="divi">
-                              <li><a id="sondiv1"href="type.html?bronzer">Países</a></li>
+                              <li><a id="sondiv1"href="type.html?paises">Países</a></li>
                             </div>
                         </ul>
                         
@@ -87,34 +87,87 @@
       var takeType = window.location.href;
       takeType = takeType.split("?")
       takeType = takeType[1]
+      console.log(takeType)
       var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", 'https://www.thesportsdb.com/api/v1/json/2/all_sports.php', false);
-      xhttp.send();
-      var retorno = JSON.parse(xhttp.responseText);
-      console.log(retorno)
-      var divpai = document.querySelector('#principal')
-    for (var ft in retorno.sports) {
-        console.log(ft);
-          var id = ft
-          var divpaii = document.querySelector('#principal').innerHTML;
-          divpai.innerHTML = `<div class="item">
+      if(takeType == 'esportes') {
+          xhttp.open("GET", 'https://www.thesportsdb.com/api/v1/json/2/all_sports.php', false);
+          xhttp.send();
+          var retorno = JSON.parse(xhttp.responseText);
+          const sports = retorno.sports
+          var divpai = document.querySelector('#principal')
+          for (var ft in sports) {
+              var id = ft
+              var divpaii = document.querySelector('#principal').innerHTML;
+              divpai.innerHTML = `<div class="item">
           <div onClick="openWindow(this.id, this.id)"id="card"class="pad15">
               <p id ="titulo" class="lead">Multi Item Carousel</p>
               <img id="image" src="" alt="" class="img-fluid">
               <a id="but"/></a>
           </div>
-      </div> `+divpaii;
+      </div> ` + divpaii;
 
-        var but = document.getElementById('card')
-        but.setAttribute("id", ft+"/"+retorno[ft].idSport)
+              var but = document.getElementById('card')
+              but.setAttribute("id", ft + "/" + sports[ft].idSport)
 
-          var titulo = document.getElementById('titulo');
-          titulo.innerHTML = retorno[ft].strSport;
-          var image = document.getElementById('image');
-          image.src = retorno[ft].strSportThumb;
+              var titulo = document.getElementById('titulo');
+              titulo.innerHTML = sports[ft].strSport;
+              var image = document.getElementById('image');
+              image.src = sports[ft].strSportThumb;
 
-    }
-      
+          }
+      }
+      if(takeType == 'paises') {
+          xhttp.open("GET", 'https://www.thesportsdb.com/api/v1/json/2/all_countries.php', false);
+          xhttp.send();
+          var retorno = JSON.parse(xhttp.responseText);
+          const sports = retorno.countries
+          var divpai = document.querySelector('#principal')
+          for (var ft in sports) {
+
+              var id = ft
+              var divpaii = document.querySelector('#principal').innerHTML;
+              divpai.innerHTML = `<div class="item">
+          <div onClick="openWindow(this.id, this.id)"id="card"class="pad15">
+              <p id ="titulo" class="lead">Multi Item Carousel</p>
+              <img id="image" src="" alt="" class="img-fluid">
+              <a id="but"/></a>
+          </div>
+      </div> ` + divpaii;
+
+              var but = document.getElementById('card')
+              var titulo = document.getElementById('titulo');
+              titulo.innerHTML = sports[ft].name_en;
+              var image = document.getElementById('image');
+              image.src = sports[ft].strSportThumb;
+
+          }
+      }
+      if(takeType == 'ligas') {
+          xhttp.open("GET", 'https://www.thesportsdb.com/api/v1/json/2/all_leagues.php', false);
+          xhttp.send();
+          var retorno = JSON.parse(xhttp.responseText);
+          const sports = retorno.leagues
+          var divpai = document.querySelector('#principal')
+          for (var ft in sports) {
+
+              var id = ft
+              var divpaii = document.querySelector('#principal').innerHTML;
+              divpai.innerHTML = `<div class="item">
+          <div onClick="openWindow(this.id, this.id)"id="card"class="pad15">
+              <p id ="titulo" class="lead">Multi Item Carousel</p>
+              <img id="image" src="" alt="" class="img-fluid">
+              <a id="but"/></a>
+          </div>
+      </div> ` + divpaii;
+
+              var but = document.getElementById('card')
+              var titulo = document.getElementById('titulo');
+              titulo.innerHTML = sports[ft].strLeague;
+              var image = document.getElementById('image');
+              image.src = sports[ft].strSportThumb;
+
+          }
+      }
 
       var titling = document.getElementById('product_type')
       titling.innerHTML = takeType

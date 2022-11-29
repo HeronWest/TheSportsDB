@@ -1,6 +1,4 @@
-#back {
-    /*background-color: rgb(245, 184, 255);*/
-}
+
 #paidiv {
     
     /*background-color: rgb(255, 175, 255);*/
@@ -17,7 +15,7 @@
     transition: 0.70s;
 } #sondiv1:hover {
     background-color: white;
-    color: rgb(255, 175, 255);
+    color: rgb(175, 255, 222);
     text-decoration: none;
     transition: 0.70s;
 } 
@@ -107,7 +105,8 @@
     
      
 } #ttl {
-    padding-left: 20px;
+    text-align: center;
+
 } #descboxx {
     display: box;
     position:-ms-page;
@@ -152,4 +151,6 @@
     text-align: center;
   }#fim {
     padding-bottom: 50px;
+  } #image {
+    width: 100%;
   }

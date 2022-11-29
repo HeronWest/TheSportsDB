@@ -14,7 +14,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     
-    <title>MakeUp</title>
+    <title>The SportsDB</title>
 
   </head>
   <body id="back">
@@ -34,13 +34,13 @@
                         <ul id=""class="nav navbar-nav">
                           
                             <div id="divi">
-                              <li><a id="sondiv1"href="type.html?blush">Esportes</a></li>
+                              <li><a id="sondiv1"href="type.html?esportes">Esportes</a></li>
                             </div>
                             <div id="divi">
-                              <li><a id="sondiv1"href="type.html?lipstick">Ligas</a></li>
+                              <li><a id="sondiv1"href="type.html?ligas">Ligas</a></li>
                             </div>
                             <div id="divi">
-                              <li><a id="sondiv1"href="type.html?bronzer">Países</a></li>
+                              <li><a id="sondiv1"href="type.html?paises">Países</a></li>
                             </div>
                         </ul>
                         
@@ -55,7 +55,7 @@
     </div>
     <div id ="back" class="container-fluid">
       <div id="sondiv3">
-        <h1 id="titl"></h1>
+        <h1 id="titl">iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</h1>
       </div>
       <div id="div2"class="container-fluid">
         <div id="div1"class="row">
@@ -73,26 +73,22 @@
          function msgprint() {
             var typex = document.querySelector("#titl").innerText
             typex = typex.toLowerCase()
-
             var takeid = window.location.href;
             takeid = takeid.split('ml?');
             takeid = takeid[1].split('/');
             id = takeid[0];
             type = takeid[1];            
             var xhttp = new XMLHttpRequest();
-            
+            console.log(id);
+             console.log(type);
             xhttp.open("GET", 'https://www.thesportsdb.com/api/v1/json/2/all_sports.php', false);
             xhttp.send();
             var retorno = JSON.parse(xhttp.responseText);
-            
+            var retorno = retorno.sports
             document.getElementById("titl").innerHTML = retorno[id].strSport;
             var imagex = document.getElementById('imagex');
-            imagex.src = retorno[id].strSportThumb;
-
-            
             var descrip = document.getElementById("description")
             descrip.innerHTML = retorno[id].strSportDescription;
-            
          }  
          msgprint();
          

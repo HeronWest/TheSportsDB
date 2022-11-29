@@ -2,6 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Heron" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Heron2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/TheSportsDB" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/TrabalhoAPI" vcs="Git" />
   </component>
 </project>
